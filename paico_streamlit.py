@@ -15,7 +15,7 @@ def run_query(query):
         cur.execute(query)
         return cur.fetchall()
 
-rows = run_query("selext * from clientes")
+rows = run_query("SELECT * FROM CLIENTES;")
 
 for row in rows:
     st.write(row)
