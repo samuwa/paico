@@ -22,7 +22,7 @@ for row in rows:
     
 st.write(pd.Dataframe([list(x) for x in rows])
     
-st.title("Ventas PAICO :earth_americas:")
+#st.title("Ventas PAICO :earth_americas:")
 
 col1, col2 = st.columns(2)
 
