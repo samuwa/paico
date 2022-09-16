@@ -15,11 +15,16 @@ def run_query(query):
         cur.execute(query)
         return cur.fetchall()
 
-rows = run_query("SELECT * FROM CLIENTES;")
+clientes_query = run_query("SELECT * FROM CLIENTES;")
 
-clientes = pd.DataFrame({x for x in rows}, columns=["clienteid","cliente","pais","industria"])
+clientes = pd.DataFrame({x for x in clientes_query}, columns=["clienteid","cliente","pais","industria"])
+
+ventas_query = run_query("SELECT * FROM VENTAS;")
+
+ventas = pd.DataFrame({x for x in ventas_query}, columns=["clienteid", "productoid", "total", "fecha"])
 
 st.write(clientes)
+st.write(ventas)
 
 # for row in rows:
 #     st.write(row)
