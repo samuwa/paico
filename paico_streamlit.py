@@ -40,20 +40,23 @@ st.title("Ventas PAICO :earth_americas:")
 
 col1, col2 = st.columns(2)
 
-col2.subheader("Clientes")
+col1.subheader("Clientes")
+col1.table(clientes)
 
 
-col1.subheader("Productos")
+col2.subheader("Productos")
+col2.table(productos)
 
 
 st.subheader("Ventas")
+st.table(ventas)
 
 
 st.subheader("Análisis de ventas")
 
 col3, col4 = st.columns(2)
-prods = col3.multiselect("Seleccionar Productos", df_productos["producto"])
-indus = col4.multiselect("Seleccionar Industrias", df_clientes["industria"])
+prods = col3.multiselect("Seleccionar Productos", productos["producto"])
+indus = col4.multiselect("Seleccionar Industrias", clientes["industria"])
 inicio = col3.date_input("Fecha de inicio")
 cierre = col4.date_input("Fecha de cierre")
 
