@@ -39,5 +39,5 @@ col3, col4 = st.columns(2)
 prods = col3.multiselect("Seleccionar Productos", df_productos["producto"])
 indus = col4.multiselect("Seleccionar Industrias", df_clientes["industria"])
 inicio = col3.date_input("Fecha de inicio")
-cierre = col4.date_input("Fecha de cierre"))
+cierre = col4.date_input("Fecha de cierre")
 
