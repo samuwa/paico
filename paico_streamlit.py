@@ -23,8 +23,13 @@ ventas_query = run_query("SELECT * FROM VENTAS;")
 
 ventas = pd.DataFrame({x for x in ventas_query}, columns=["clienteid", "productoid", "total", "fecha"])
 
+productos_query = run_query("SELECT * FROM PRODUCTOS;")
+
+productos = pd.DataFrame({x for x in productos_query}, columns=["productoid", "producto", "origen"])
+
 st.write(clientes)
 st.write(ventas)
+st.write(productos)
 
 # for row in rows:
 #     st.write(row)
