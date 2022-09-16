@@ -49,7 +49,7 @@ col2.table(productos)
 
 
 st.subheader("Ventas")
-st.dataframe(ventas, height=200, width=800)
+st.table(ventas.head(10))
 
 
 st.subheader("Análisis de ventas")
