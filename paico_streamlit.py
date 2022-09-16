@@ -22,7 +22,7 @@ rows = run_query("SELECT * FROM CLIENTES;")
     
 # st.table(pd.DataFrame(rows, columns=cur.description))
 
-st.write(dic(rows))
+st.write(dict(rows))
     
 st.title("Ventas PAICO :earth_americas:")
 
