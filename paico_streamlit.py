@@ -18,7 +18,7 @@ def run_query(query):
 rows = run_query("SELECT * FROM CLIENTES;")
 
 for row in rows:
-    st.write(row)
+    st.write(pd.Dataframe(row))
     
 st.write(rows)
     
