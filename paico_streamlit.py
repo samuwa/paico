@@ -13,14 +13,16 @@ conn = init_connection()
 def run_query(query):
     with conn.cursor() as cur:
         cur.execute(query)
-        return cur.fetchall()
+        return cur.fetch_pandas_all()
 
 rows = run_query("SELECT * FROM CLIENTES;")
 
-for row in rows:
-    st.write(row)
+# for row in rows:
+#     st.write(row)
     
-st.table(pd.DataFrame(rows, columns=cur.description))
+# st.table(pd.DataFrame(rows, columns=cur.description))
+
+st.write(rows)
     
 st.title("Ventas PAICO :earth_americas:")
 
