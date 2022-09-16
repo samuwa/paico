@@ -21,21 +21,19 @@ rows = run_query("SELECT * FROM CLIENTES;")
 #     st.write(row)
     
 # st.table(pd.DataFrame(rows, columns=cur.description))
-
-st.write(dict(rows))
     
 st.title("Ventas PAICO :earth_americas:")
 
 col1, col2 = st.columns(2)
 
 col2.subheader("Clientes")
-col2.table(df_clientes.head())
+
 
 col1.subheader("Productos")
-col1.table(df_productos)
+
 
 st.subheader("Ventas")
-st.table(df_ventas.head(5))
+
 
 st.subheader("Análisis de ventas")
 
