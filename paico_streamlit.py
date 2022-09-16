@@ -18,9 +18,9 @@ def run_query(query):
 rows = run_query("SELECT * FROM CLIENTES;")
 
 for row in rows:
-    st.write(pd.Dataframe(row))
+    st.write(row)
     
-#st.write(rows)
+st.write(pd.Dataframe(rows))
     
 st.title("Ventas PAICO :earth_americas:")
 
