@@ -4,7 +4,7 @@ import plotly.express as px
 import snowflake.connector
 
 # Crear conexión
-#@st.experimental_singleton
+@st.experimental_singleton
 def init_connection():
     return snowflake.connector.connect(**st.secrets["snowflake"])
 
