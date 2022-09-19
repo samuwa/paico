@@ -65,7 +65,7 @@ cierre = col4.date_input("Fecha de cierre")
 if len(indus) == 0:
     pass
 elif len(indus) == 1:
-    indus = str(indus)
+    indus = str("("+indus+")")
 else:
     indus = tuple(indus)
 total_industria_query = run_query(f"select clientes.industria, sum(ventas.total) from clientes join ventas on ventas.cliente = clientes.clienteid where clientes.industria in {indus} group by clientes.industria")
