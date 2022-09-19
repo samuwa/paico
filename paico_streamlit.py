@@ -61,7 +61,14 @@ inicio = col3.date_input("Fecha de inicio")
 cierre = col4.date_input("Fecha de cierre")
 
 
-total_industria_query = run_query(f"select clientes.industria, sum(ventas.total) from clientes join ventas on ventas.cliente = clientes.clienteid where clientes.industria in {tuple(indus)} group by clientes.industria")
+# Query totales por industria
+if len(indus) == 0:
+    pass
+elif len(indus) == 1:
+    indus = str(indus)
+else:
+    indus = tuple(indus)
+total_industria_query = run_query(f"select clientes.industria, sum(ventas.total) from clientes join ventas on ventas.cliente = clientes.clienteid where clientes.industria in {indus} group by clientes.industria")
 total_industria_df = pd.DataFrame(total_industria_query, columns=["Industria", "Total"])
 st.write(total_industria_df)                                  
                                 
