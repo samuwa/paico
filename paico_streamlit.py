@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.express as px
 import snowflake.connector
 
+# Crear conexión
 @st.experimental_singleton
 def init_connection():
     return snowflake.connector.connect(**st.secrets["snowflake"])
@@ -14,7 +15,10 @@ def run_query(query):
     with conn.cursor() as cur:
         cur.execute(query)
         return cur.fetchall()
+    
+ 
 
+# Queries para tablas
 clientes_query = run_query("SELECT * FROM CLIENTES;")
 
 clientes = pd.DataFrame({x for x in clientes_query}, columns=["clienteid","cliente","pais","industria"])
@@ -26,10 +30,6 @@ ventas = pd.DataFrame({x for x in ventas_query}, columns=["clienteid", "producto
 productos_query = run_query("SELECT * FROM PRODUCTOS;")
 
 productos = pd.DataFrame({x for x in productos_query}, columns=["productoid", "producto", "origen"])
-
-st.write(clientes)
-st.write(ventas)
-st.write(productos)
 
 # for row in rows:
 #     st.write(row)
@@ -60,3 +60,8 @@ indus = col4.multiselect("Seleccionar Industrias", clientes["industria"])
 inicio = col3.date_input("Fecha de inicio")
 cierre = col4.date_input("Fecha de cierre")
 
+
+total_industria_query = run_query(f"select clientes.industria, sum(ventas.total) from clientes join ventas on ventas.cliente = clientes.clienteidwhere clientes.industria in {set(indus)} group by clientes.industria"
+total_industria_df = pd.DataFrame(total_industria_query, columns=["Industria", "Total"])
+st.write(total_industria_df)                                  
+                                
